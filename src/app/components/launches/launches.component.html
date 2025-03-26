@@ -1,0 +1,64 @@
+<div class="launches-container">
+  <div class="header">
+    <h2>Lançamentos SpaceX</h2>
+    <div class="filters">
+      <input 
+        type="text" 
+        placeholder="Buscar lançamento..." 
+        [(ngModel)]="searchTerm"
+        (input)="filterLaunches()"
+      >
+      <select [(ngModel)]="statusFilter" (change)="filterLaunches()">
+        <option value="">Todos os Status</option>
+        <option value="success">Sucesso</option>
+        <option value="failure">Falha</option>
+        <option value="upcoming">Próximos</option>
+      </select>
+    </div>
+  </div>
+  
+  <div *ngIf="loading" class="loading">
+    <div class="spinner"></div>
+    <p>Carregando lançamentos...</p>
+  </div>
+
+  <div *ngIf="!loading && filteredLaunches.length === 0" class="no-results">
+    <p>Nenhum lançamento encontrado.</p>
+  </div>
+
+  <div *ngIf="!loading" class="launches-grid">
+    <div *ngFor="let launch of filteredLaunches" class="launch-card">
+      <div class="launch-header">
+        <h3>{{ launch.name }}</h3>
+        <span class="status" [ngClass]="launch.success ? 'success' : 'failure'">
+          {{ launch.success ? 'Sucesso' : 'Falha' }}
+        </span>
+      </div>
+      
+      <div class="launch-details">
+        <p><strong>Data:</strong> {{ launch.date_utc | date:'dd/MM/yyyy HH:mm' }}</p>
+        <p><strong>Local:</strong> {{ launch.launchpad?.name || 'Não disponível' }}</p>
+        <p><strong>Foguete:</strong> {{ launch.rocket?.name || 'Não disponível' }}</p>
+      </div>
+
+      <div class="launch-description">
+        <p>{{ launch.details || 'Nenhum detalhe disponível' }}</p>
+      </div>
+
+      <div class="launch-links" *ngIf="launch.links">
+        <a *ngIf="launch.links.webcast" 
+           [href]="launch.links.webcast" 
+           target="_blank" 
+           class="link-button">
+          Assistir Lançamento
+        </a>
+        <a *ngIf="launch.links.article" 
+           [href]="launch.links.article" 
+           target="_blank" 
+           class="link-button">
+          Ler Artigo
+        </a>
+      </div>
+    </div>
+  </div>
+</div> 

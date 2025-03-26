@@ -1,0 +1,32 @@
+<div class="rockets-container">
+  <h1>Foguetes SpaceX</h1>
+  
+  <div class="rockets-grid">
+    @for (rocket of rockets; track rocket.id) {
+      <div class="rocket-card">
+        @if (rocket.flickr_images[0]) {
+          <img [src]="rocket.flickr_images[0]" [alt]="rocket.name" class="rocket-image">
+        }
+        <div class="rocket-info">
+          <h2>{{ rocket.name }}</h2>
+          <p class="description">{{ rocket.description }}</p>
+          <div class="details">
+            <p><strong>Tipo:</strong> {{ rocket.type }}</p>
+            <p><strong>Status:</strong> {{ rocket.active ? 'Ativo' : 'Inativo' }}</p>
+            <p><strong>Estágios:</strong> {{ rocket.stages }}</p>
+            <p><strong>Boosters:</strong> {{ rocket.boosters }}</p>
+            <p><strong>Custo por Lançamento:</strong> ${{ formatCost(rocket.cost_per_launch) }}</p>
+            <p><strong>Taxa de Sucesso:</strong> {{ rocket.success_rate_pct }}%</p>
+            <p><strong>Primeiro Voo:</strong> {{ rocket.first_flight | date:'dd/MM/yyyy' }}</p>
+            <p><strong>País:</strong> {{ rocket.country }}</p>
+          </div>
+          <div class="links">
+            <a [href]="rocket.wikipedia" target="_blank" rel="noopener noreferrer" class="wiki-link">
+              Saiba mais na Wikipédia
+            </a>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div> 

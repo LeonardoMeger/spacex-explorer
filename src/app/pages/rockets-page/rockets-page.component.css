@@ -1,0 +1,86 @@
+.rockets-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+h1 {
+  color: #1a1a1a;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.rockets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.rocket-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+.rocket-card:hover {
+  transform: translateY(-5px);
+}
+
+.rocket-image {
+  width: 100%;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.rocket-info {
+  padding: 1.5rem;
+}
+
+h2 {
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.description {
+  color: #666;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.details {
+  margin-bottom: 1.5rem;
+}
+.details p {
+  margin: 0.5rem 0;
+  color: #444;
+}
+.details strong {
+  color: #1a1a1a;
+}
+
+.links {
+  display: flex;
+  justify-content: center;
+}
+
+.wiki-link {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #1a1a1a;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+.wiki-link:hover {
+  background-color: #333;
+}
+
+@media (max-width: 768px) {
+  .rockets-grid {
+    grid-template-columns: 1fr;
+  }
+}/*# sourceMappingURL=rockets-page.component.css.map */
