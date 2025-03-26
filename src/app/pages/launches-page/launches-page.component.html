@@ -1,0 +1,62 @@
+<div class="launches-container">
+  <h1>Lançamentos SpaceX</h1>
+
+  @if (loading) {
+    <div class="loading">Carregando lançamentos...</div>
+  } @else {
+    <div class="launches-grid">
+      @for (launch of launches; track launch.id) {
+        <div class="launch-card">
+          @if (launch.links.patch.small) {
+            <img [src]="launch.links.patch.small" [alt]="launch.name" class="launch-patch">
+          }
+          <div class="launch-info">
+            <h2>{{ launch.name }}</h2>
+            <p class="date">{{ launch.date_utc | date:'dd/MM/yyyy HH:mm' }}</p>
+            <p class="status" [class.success]="launch.success" [class.failure]="!launch.success">
+              {{ launch.success ? 'Sucesso' : 'Falha' }}
+            </p>
+            @if (launch.details) {
+              <p class="details">{{ launch.details }}</p>
+            }
+            <div class="links">
+              @if (launch.links.webcast) {
+                <a [href]="launch.links.webcast" target="_blank" rel="noopener noreferrer" class="link-button">
+                  Assistir
+                </a>
+              }
+              @if (launch.links.article) {
+                <a [href]="launch.links.article" target="_blank" rel="noopener noreferrer" class="link-button">
+                  Artigo
+                </a>
+              }
+              @if (launch.links.wikipedia) {
+                <a [href]="launch.links.wikipedia" target="_blank" rel="noopener noreferrer" class="link-button">
+                  Wikipédia
+                </a>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="pagination">
+      <button 
+        (click)="previousPage()" 
+        [disabled]="currentPage === 1"
+        class="page-button"
+      >
+        Anterior
+      </button>
+      <span class="page-info">Página {{ currentPage }} de {{ totalPages }}</span>
+      <button 
+        (click)="nextPage()" 
+        [disabled]="currentPage >= totalPages"
+        class="page-button"
+      >
+        Próxima
+      </button>
+    </div>
+  }
+</div> 

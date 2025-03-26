@@ -1,0 +1,144 @@
+.launches-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+h1 {
+  color: #1a1a1a;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.loading {
+  text-align: center;
+  color: #666;
+  font-size: 1.2rem;
+  padding: 2rem;
+}
+
+.launches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.launch-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+.launch-patch {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  background: #f5f5f5;
+  padding: 1rem;
+}
+
+.launch-info {
+  padding: 1.5rem;
+}
+
+h2 {
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.date {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.status {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+
+  &.success {
+    background-color: #e6f4ea;
+    color: #1e7e34;
+  }
+
+  &.failure {
+    background-color: #fce8e6;
+    color: #d93025;
+  }
+}
+
+.details {
+  color: #666;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.links {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.link-button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #1a1a1a;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #333;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.page-button {
+  padding: 0.5rem 1rem;
+  background-color: #1a1a1a;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover:not(:disabled) {
+    background-color: #333;
+  }
+
+  &:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+}
+
+.page-info {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .launches-grid {
+    grid-template-columns: 1fr;
+  }
+} 
